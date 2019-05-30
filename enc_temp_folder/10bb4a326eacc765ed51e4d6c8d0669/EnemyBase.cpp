@@ -82,7 +82,7 @@ void AEnemyBase::BeginPlay()
 	
 
 	
-	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, FString::SanitizeFloat(Health/MaxHealth));
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, FString::SanitizeFloat(Health/MaxHealth));
 }
 
 // Called every frame
