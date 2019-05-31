@@ -2,8 +2,6 @@
 
 #include "MyPlayerController.h"
 #include "Pawns/MyPawn.h"
-#include "Kismet/GameplayStatics.h"
-#include "GameModes/MyGameModeBase.h"
 
 
 
@@ -24,8 +22,6 @@ void AMyPlayerController::SetupInputComponent()
 	InputComponent->BindAction("SecondaryFire", IE_Pressed, this, &AMyPlayerController::SecondaryFire);
 
 	InputComponent->BindAction("SecondaryFire", IE_Released, this, &AMyPlayerController::EndSecondaryFire);
-
-	InputComponent->BindAction("Pause", IE_Pressed, this, &AMyPlayerController::OpenPauseMenu);
 
 }
 
@@ -85,11 +81,6 @@ void AMyPlayerController::EndSecondaryFire()
 	}
 }
 
-void AMyPlayerController::OpenPauseMenu()
-{
-	GameMode->OpenPauseMenu();
-}
-
 void AMyPlayerController::OnPossess(APawn* aPawn)
 {
 	Super::OnPossess(aPawn);
@@ -99,7 +90,4 @@ void AMyPlayerController::OnPossess(APawn* aPawn)
 	PrimaryFireSpawn = MyPawn->GetPrimaryFireComponent();
 	SecondaryFireLeft = MyPawn->GetSecondaryFireComponentLeft();
 	SecondaryFireRight = MyPawn->GetSecondaryFireComponentRight();
-
-	GameMode = Cast<AMyGameModeBase>(UGameplayStatics::GetGameMode(this));
-	verify(GameMode != nullptr);
 }

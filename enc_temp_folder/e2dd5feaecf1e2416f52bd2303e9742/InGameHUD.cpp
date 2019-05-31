@@ -28,16 +28,3 @@ void AInGameHUD::SetupGameOverGUI()
 		}
 	}
 }
-
-void AInGameHUD::SetupPauseMenuGUI()
-{
-	if (PauseGUIClass != nullptr)
-	{
-		PauseGUI = CreateWidget<UUserWidget>(GetWorld(), PauseGUIClass);
-
-		if (PauseGUI != nullptr)
-		{
-			PauseGUI->AddToViewport();
-		}
-	}
-}

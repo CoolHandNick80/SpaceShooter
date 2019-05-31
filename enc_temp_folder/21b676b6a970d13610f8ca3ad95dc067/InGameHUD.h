@@ -29,21 +29,11 @@ protected:
 	UPROPERTY()
 		UUserWidget* GameOverGUI = nullptr;
 
-	UPROPERTY(EditDefaultsOnly)
-		TSubclassOf<UUserWidget> PauseGUIClass = nullptr;
-
-	UPROPERTY()
-		UUserWidget* PauseGUI = nullptr;
-
 public:
 
 	void SetupInGameGUI();
 
 	void SetupGameOverGUI();
-
-	void SetupPauseMenuGUI();
-
-
 
 	
 };

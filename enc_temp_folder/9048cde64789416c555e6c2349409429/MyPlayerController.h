@@ -9,7 +9,6 @@
 class AMyPawn;
 class UMyPawnMovementComponent;
 class UFireComponent;
-class AMyGameModeBase;
 
 UCLASS()
 class SPACESHOOTER_API AMyPlayerController : public APlayerController
@@ -32,9 +31,6 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 		UFireComponent* SecondaryFireRight = nullptr;
 
-	UPROPERTY(EditDefaultsOnly)
-		AMyGameModeBase* GameMode = nullptr;
-
 protected:
 	
 	virtual void SetupInputComponent() override;
@@ -52,8 +48,6 @@ protected:
 	void EndPrimaryFire();
 
 	void EndSecondaryFire();
-
-	void OpenPauseMenu();
 
 public:
 

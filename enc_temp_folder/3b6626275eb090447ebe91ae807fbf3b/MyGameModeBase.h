@@ -52,8 +52,6 @@ protected:
 	void SetupHealth();
 
 	void SetupData();
-
-	
 	
 public:
 
@@ -68,9 +66,6 @@ public:
 
 	UFUNCTION()
 		void PlayCamShake(TSubclassOf<class UCameraShake> InShake, FVector InEpicenter);
-
-	UFUNCTION()
-		void OpenPauseMenu();
 
 protected:
 

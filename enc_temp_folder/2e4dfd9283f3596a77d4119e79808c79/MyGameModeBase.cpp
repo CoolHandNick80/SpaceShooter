@@ -107,25 +107,6 @@ void AMyGameModeBase::SetupData()
 
 }
 
-void AMyGameModeBase::OpenPauseMenu()
-{
-	
-
-	if (PlayerController != nullptr)
-	{
-		
-
-		if (InGameHUD != nullptr)
-		{
-			UGameplayStatics::SetGamePaused(GetWorld(), true);
-			InGameHUD->SetupPauseMenuGUI();
-			PlayerController->bShowMouseCursor = true;
-			SetInputModeUIOnly();
-
-		}
-	}
-}
-
 void AMyGameModeBase::PlayCamShake(TSubclassOf<class UCameraShake> InShake, FVector InEpicenter)
 {
 	UGameplayStatics::PlayWorldCameraShake(this, InShake, InEpicenter, NULL, NULL);
