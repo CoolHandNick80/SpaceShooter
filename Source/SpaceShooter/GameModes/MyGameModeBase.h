@@ -36,6 +36,9 @@ protected:
 	UPROPERTY()
 		UMyGameInstance* GameInstance = nullptr;
 
+	UPROPERTY()
+		APlayerController* PlayerController = nullptr;
+
 protected:
 	void SpawnGameplayCamera();
 
@@ -46,6 +49,8 @@ protected:
 	void SetInputModeUIOnly();
 
 	void SetupHealth();
+
+	void SetupData();
 	
 public:
 

@@ -88,6 +88,10 @@ void AMyGameModeBase::SetupHealth()
 	}
 }
 
+void AMyGameModeBase::SetupData()
+{
+}
+
 void AMyGameModeBase::PlayCamShake(TSubclassOf<class UCameraShake> InShake, FVector InEpicenter)
 {
 	UGameplayStatics::PlayWorldCameraShake(this, InShake, InEpicenter, NULL, NULL);

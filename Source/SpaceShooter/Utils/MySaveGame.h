@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
+#include "Globals/GlobalTypes.h"
 #include "MySaveGame.generated.h"
 
 /**
@@ -14,4 +15,12 @@ class SPACESHOOTER_API UMySaveGame : public USaveGame
 {
 	GENERATED_BODY()
 	
+public:
+
+	UPROPERTY(VisibleAnywhere)
+		FPlayerData SavedPlayerData;
+
+	UPROPERTY(VisibleAnywhere)
+		FName CurrentLevelName;
+
 };
