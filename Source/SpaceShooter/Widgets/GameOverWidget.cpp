@@ -7,6 +7,8 @@
 
 void UGameOverWidget::NativeConstruct()
 {
+	Super::NativeConstruct();
+	
 	SetupData();
 }
 
