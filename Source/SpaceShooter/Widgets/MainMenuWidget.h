@@ -6,6 +6,8 @@
 #include "Blueprint/UserWidget.h"
 #include "MainMenuWidget.generated.h"
 
+class UButton;
+
 /**
  * 
  */
@@ -13,5 +15,8 @@ UCLASS()
 class SPACESHOOTER_API UMainMenuWidget : public UUserWidget
 {
 	GENERATED_BODY()
+
+		UPROPERTY()
+		TArray<UButton> ButtonsArray;
 	
 };
