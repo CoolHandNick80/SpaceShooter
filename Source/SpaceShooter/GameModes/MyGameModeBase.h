@@ -72,6 +72,9 @@ public:
 	UFUNCTION()
 		void OpenPauseMenu();
 
+	UFUNCTION(BlueprintCallable)
+		void Resume();
+
 protected:
 
 	int32 EnemyCount = 0;

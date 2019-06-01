@@ -41,3 +41,11 @@ void AInGameHUD::SetupPauseMenuGUI()
 		}
 	}
 }
+
+void AInGameHUD::ResumeFromPause()
+{
+	if (PauseGUI != nullptr)
+	{
+		PauseGUI->RemoveFromViewport();
+	}
+}

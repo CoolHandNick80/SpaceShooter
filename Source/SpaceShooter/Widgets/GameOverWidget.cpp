@@ -2,4 +2,21 @@
 
 
 #include "GameOverWidget.h"
+#include "Kismet/GameplayStatics.h"
+#include "GameInstances/MyGameInstance.h"
 
+void UGameOverWidget::NativeConstruct()
+{
+	SetupData();
+}
+
+void UGameOverWidget::SetupData()
+{
+	GameInstance = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(this));
+
+	if (GameInstance != nullptr)
+	{
+		CurrentLevelName = GameInstance->GetCurrentLevel();
+	}
+	
+}

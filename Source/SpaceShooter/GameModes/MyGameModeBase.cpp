@@ -105,23 +105,36 @@ void AMyGameModeBase::SetupData()
 		verify(InGameHUD != nullptr);
 	}
 
+	if (GameInstance != nullptr)
+	{
+		GameInstance->SetCurrentLevel(FName(*UGameplayStatics::GetCurrentLevelName(GetWorld(),true)));
+	}
 }
 
 void AMyGameModeBase::OpenPauseMenu()
 {
-	
-
 	if (PlayerController != nullptr)
 	{
-		
-
 		if (InGameHUD != nullptr)
 		{
 			UGameplayStatics::SetGamePaused(GetWorld(), true);
 			InGameHUD->SetupPauseMenuGUI();
 			PlayerController->bShowMouseCursor = true;
 			SetInputModeUIOnly();
+		}
+	}
+}
 
+void AMyGameModeBase::Resume()
+{
+	if (PlayerController != nullptr)
+	{
+		if (InGameHUD != nullptr)
+		{
+			UGameplayStatics::SetGamePaused(GetWorld(), false);
+			InGameHUD->ResumeFromPause();
+			PlayerController->bShowMouseCursor = false;
+			SetInputModeGameOnly();
 		}
 	}
 }
@@ -162,7 +175,6 @@ void AMyGameModeBase::GameOver()
 			InGameHUD->SetupGameOverGUI();
 			PlayerController->bShowMouseCursor = true;
 			SetInputModeUIOnly();
-
 		}
 	}
 }

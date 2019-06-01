@@ -32,6 +32,9 @@ protected:
 	UPROPERTY()
 		FPlayerData PlayerData;
 
+	UPROPERTY()
+		FName CurrentLevelName;
+
 public:
 
 	FPlayerData* GetPlayerData() { return &PlayerData; }
@@ -41,4 +44,8 @@ public:
 	void UpdateHealth(float InDamage);
 
 	void SetupHealth();
+
+	void SetCurrentLevel(FName InLevelName) { CurrentLevelName = InLevelName; }
+
+	FName GetCurrentLevel() { return CurrentLevelName; }
 };

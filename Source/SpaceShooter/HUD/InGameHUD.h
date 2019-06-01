@@ -43,6 +43,8 @@ public:
 
 	void SetupPauseMenuGUI();
 
+	void ResumeFromPause();
+
 
 
 	
