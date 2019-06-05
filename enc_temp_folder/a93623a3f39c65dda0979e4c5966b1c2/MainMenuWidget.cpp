@@ -3,7 +3,7 @@
 
 #include "MainMenuWidget.h"
 #include "Runtime/UMG/Public/Blueprint/WidgetTree.h"
-#include "Widgets/MyButton.h"
+#include "Components/Button.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/PlayerController.h"
 
@@ -16,40 +16,52 @@ void UMainMenuWidget::NativeConstruct()
 	
 	NewGameButton->SetKeyboardFocus();
 
-	CicleArray();
+	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Purple, "InitializeInputComponent");
 
 	//InputBinding = PlayerController->InputComponent->BindAxis("MenuNav", this, &UMainMenuWidget::ScrollButtons);
 	//InputBinding.bConsumeInput = false;
 }
+
+/*void UMainMenuWidget::InitializeInputComponent()
+{
+	Super::InitializeInputComponent();
+
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Purple,"InitializeInputComponent");
+
+	InputBinding = InputComponent->BindAxis("MoveForward", this, &UMainMenuWidget::ScrollButtons);
+	InputBinding.bConsumeInput = false;
+}*/
+
 
 void UMainMenuWidget::SetupData()
 {
 	PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 	verify(PlayerController != nullptr);
 
-	NewGameButton = Cast<UMyButton>(WidgetTree->FindWidget("BTN_NewGame"));
+	NewGameButton = Cast<UButton>(WidgetTree->FindWidget("BTN_NewGame"));
 	verify(NewGameButton != nullptr);
 
 	if (NewGameButton != nullptr)
 	{
+		NewGameButton->OnHovered.Broadcast();
 		ButtonsArray.Add(NewGameButton);
 	}
 
-	ContinueButton = Cast<UMyButton>(WidgetTree->FindWidget("BTN_Continue"));
+	ContinueButton = Cast<UButton>(WidgetTree->FindWidget("BTN_Continue"));
 
 	if (ContinueButton != nullptr)
 	{
 		ButtonsArray.Add(ContinueButton);
 	}
 
-	LoadGameButton = Cast<UMyButton>(WidgetTree->FindWidget("BTN_LoadGame"));
+	LoadGameButton = Cast<UButton>(WidgetTree->FindWidget("BTN_LoadGame"));
 
 	if (LoadGameButton != nullptr)
 	{
 		ButtonsArray.Add(LoadGameButton);
 	}
 
-	QuitButton = Cast<UMyButton>(WidgetTree->FindWidget("BTN_Quit"));
+	QuitButton = Cast<UButton>(WidgetTree->FindWidget("BTN_Quit"));
 
 	if (QuitButton != nullptr)
 	{
@@ -58,7 +70,7 @@ void UMainMenuWidget::SetupData()
 
 	LastArrayIndex  = (ButtonsArray.Num()-1);
 
-	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, FString::FromInt(LastArrayIndex));
+	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, FString::FromInt(LastArrayIndex));
 }
 
 void UMainMenuWidget::ScrollButtons(float InValue)
@@ -94,13 +106,5 @@ void UMainMenuWidget::ScrollButtons(float InValue)
 		ButtonsArray[CurrentButtonIndex]->OnHovered.Broadcast();
 	}
 
-}
-
-void UMainMenuWidget::CicleArray()
-{
-	for (auto& Button : ButtonsArray)
-	{
-		Button->StartTimer();
-	}
 }
 
