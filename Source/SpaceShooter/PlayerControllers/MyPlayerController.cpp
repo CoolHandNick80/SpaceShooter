@@ -12,7 +12,7 @@ void AMyPlayerController::SetupInputComponent()
 	Super::SetupInputComponent();
 
 	InputComponent->BindAxis("MoveForward", this, &AMyPlayerController::MoveForward);
-
+	
 	InputComponent->BindAxis("MoveRight", this, &AMyPlayerController::MoveRight);
 
 	InputComponent->BindAxis("MoveUP", this, &AMyPlayerController::MoveUp);
