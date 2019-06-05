@@ -21,6 +21,7 @@ void AMainMenu_GameMode::BeginPlay()
 		APlayerController* MyPlayerController = UGameplayStatics::GetPlayerController(this, 0);
 		if (MyPlayerController != nullptr)
 		{
+			MyPlayerController->SetInputMode(FInputModeUIOnly());
 			MyPlayerController->bShowMouseCursor = true;
 		}
 		

@@ -8,7 +8,7 @@
 #include "MainMenuWidget.generated.h"
 
 
-class UMyButton;
+class UButton;
 class APlayerController;
 
 /**
@@ -20,7 +20,11 @@ class SPACESHOOTER_API UMainMenuWidget : public UUserWidget
 	GENERATED_BODY()
 
 	virtual void NativeConstruct() override;
-	
+
+	//virtual void InitializeInputComponent() override;
+
+	//virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime) override;
+
 protected:
 
 	UPROPERTY()
@@ -36,22 +40,30 @@ protected:
 		APlayerController* PlayerController = nullptr;
 
 	UPROPERTY()
-		TArray<UMyButton*> ButtonsArray;
+		TArray<UButton*> ButtonsArray;
 	
 	UPROPERTY()
-		UMyButton* NewGameButton = nullptr;
+		UButton* NewGameButton = nullptr;
 
 	UPROPERTY()
-		UMyButton* ContinueButton = nullptr;
+		UButton* ContinueButton = nullptr;
 
 	UPROPERTY()
-		UMyButton* LoadGameButton = nullptr;
+		UButton* LoadGameButton = nullptr;
 
 	UPROPERTY()
-		UMyButton* QuitButton = nullptr;
+		UButton* QuitButton = nullptr;
 
+		
+	
 		FInputBinding InputBinding = FInputBinding::FInputBinding();
  
+public:
+
+	float StickX = 0.F;
+	
+	float StickY = 0.F;
+
 protected:
 
 	void SetupData();
@@ -59,6 +71,5 @@ protected:
 	UFUNCTION()
 		void ScrollButtons(float InValue);
 
-	void CicleArray();
 
 };
