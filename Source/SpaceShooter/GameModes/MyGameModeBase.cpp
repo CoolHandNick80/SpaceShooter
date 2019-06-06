@@ -35,7 +35,7 @@ void AMyGameModeBase::SpawnGameplayCamera()
 		{
 			GameplayCamera->SetTargetActor(MyPawn);
 
-			//APlayerController* PlayerController = UGameplayStatics::GetPlayerController(this, 0);
+			
 
 			if (PlayerController != nullptr)
 			{
@@ -47,11 +47,11 @@ void AMyGameModeBase::SpawnGameplayCamera()
 
 void AMyGameModeBase::SpawnInGameGUI()
 {
-	//APlayerController* PlayerController = UGameplayStatics::GetPlayerController(this, 0);
+	
 
 	if (PlayerController != nullptr)
 	{
-		//InGameHUD = Cast<AInGameHUD>(PlayerController->GetHUD());
+		
 
 		if (InGameHUD != nullptr)
 		{
@@ -62,7 +62,7 @@ void AMyGameModeBase::SpawnInGameGUI()
 
 void AMyGameModeBase::SetInputModeGameOnly()
 {
-	//APlayerController* PlayerController = UGameplayStatics::GetPlayerController(this, 0);
+	
 
 	if (PlayerController != nullptr)
 	{
@@ -72,7 +72,7 @@ void AMyGameModeBase::SetInputModeGameOnly()
 
 void AMyGameModeBase::SetInputModeUIOnly()
 {
-	//APlayerController* PlayerController = UGameplayStatics::GetPlayerController(this, 0);
+	
 
 	if (PlayerController != nullptr)
 	{
@@ -82,7 +82,7 @@ void AMyGameModeBase::SetInputModeUIOnly()
 
 void AMyGameModeBase::SetupHealth()
 {
-	//GameInstance = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(this));
+	
 
 	if (GameInstance != nullptr)
 	{

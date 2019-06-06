@@ -7,6 +7,7 @@
 #include "PauseMenuWidget.generated.h"
 
 class AMyGameModeBase;
+class UMyButton;
 
 /**
  * 
@@ -20,6 +21,27 @@ class SPACESHOOTER_API UPauseMenuWidget : public UUserWidget
 
 protected:
 
+	UPROPERTY()
+		int32 LastArrayIndex = 0;
+
+	UPROPERTY()
+		TArray<UMyButton*> ButtonsArray;
+
+	UPROPERTY()
+		UMyButton* ResumeButton = nullptr;
+
+	UPROPERTY()
+		UMyButton* SaveGameButton = nullptr;
+
+	UPROPERTY()
+		UMyButton* ExitButton = nullptr;
+
+	UPROPERTY()
+		UMyButton* QuitButton = nullptr;
+	
+
+protected:
+
 	UPROPERTY(BlueprintReadOnly)
 		AMyGameModeBase* GameMode = nullptr;
 
@@ -27,5 +49,8 @@ protected:
 
 	void SetupData();
 
+	void FillArray();
+
+	void CicleArray();
 	
 };
