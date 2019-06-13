@@ -17,15 +17,16 @@ class SPACESHOOTER_API UMyButton : public UButton
 
 		UMyButton(const FObjectInitializer& ObjectInitializer);
 
+	
+
 public:
 
 	void StartTimer();
 
-protected:
-	
 	UFUNCTION()
 		void CheckFocus();
 
+protected:
 	UFUNCTION(BlueprintImplementableEvent)
 		void SetMouseStyle();
 	

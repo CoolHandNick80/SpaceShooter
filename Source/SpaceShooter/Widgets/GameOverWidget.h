@@ -8,6 +8,7 @@
 #include "GameOverWidget.generated.h"
 
 class UMyGameInstance;
+class UMyButton;
 
 /**
  * 
@@ -19,19 +20,33 @@ class SPACESHOOTER_API UGameOverWidget : public UUserWidget
 
 	virtual void NativeConstruct() override;
 
-protected:
+	virtual void NativeTick(const FGeometry & MyGeometry, float InDeltaTime) override;
 
+protected:
+	UPROPERTY()
+		int32 LastArrayIndex = 0;
+
+	UPROPERTY()
+		TArray<UMyButton*> ButtonsArray;
+
+	UPROPERTY()
+		UMyButton* RetryButton = nullptr;
+
+	UPROPERTY()
+		UMyButton* QuitButton = nullptr;
 	
 
 	UPROPERTY()
 		UMyGameInstance* GameInstance = nullptr;
+	
+	UPROPERTY(BlueprintReadOnly)
+		FName CurrentLevelName;
 
 protected:
 
 	void SetupData();
 
-	UPROPERTY(BlueprintReadOnly)
-		FName CurrentLevelName;
+	void FillArray();
 
 	
 };

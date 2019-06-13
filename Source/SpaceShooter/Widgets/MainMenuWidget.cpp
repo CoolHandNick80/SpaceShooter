@@ -5,7 +5,6 @@
 #include "Runtime/UMG/Public/Blueprint/WidgetTree.h"
 #include "Widgets/MyButton.h"
 #include "Kismet/GameplayStatics.h"
-#include "GameFramework/PlayerController.h"
 
 
 void UMainMenuWidget::NativeConstruct()
@@ -15,21 +14,22 @@ void UMainMenuWidget::NativeConstruct()
 	SetupData();
 	
 	NewGameButton->SetKeyboardFocus();
+}
 
-	CicleArray();
+void UMainMenuWidget::NativeTick(const FGeometry & MyGeometry, float InDeltaTime)
+{
+	Super::NativeTick(MyGeometry, InDeltaTime);
 
-	//InputBinding = PlayerController->InputComponent->BindAxis("MenuNav", this, &UMainMenuWidget::ScrollButtons);
-	//InputBinding.bConsumeInput = false;
+	for (auto& Button : ButtonsArray)
+	{
+		Button->CheckFocus();
+	}
 }
 
 void UMainMenuWidget::SetupData()
 {
-	PlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
-	verify(PlayerController != nullptr);
-
 	NewGameButton = Cast<UMyButton>(WidgetTree->FindWidget("BTN_NewGame"));
-	verify(NewGameButton != nullptr);
-
+	
 	if (NewGameButton != nullptr)
 	{
 		ButtonsArray.Add(NewGameButton);
@@ -57,50 +57,7 @@ void UMainMenuWidget::SetupData()
 	}
 
 	LastArrayIndex  = (ButtonsArray.Num()-1);
-
-	//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, FString::FromInt(LastArrayIndex));
 }
 
-void UMainMenuWidget::ScrollButtons(float InValue)
-{
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Green, FString::SanitizeFloat(InValue));
 
-	if (!FMath::IsNearlyZero(InValue, 0.3F))
-	{
-		if (InValue > 0.7F)
-		{
-			if (CurrentButtonIndex > 0)
-			{
-				PreviousButtonIndex = CurrentButtonIndex;
-				CurrentButtonIndex -= 1;
-			}
-		}
-
-		if (InValue < -0.7F)
-		{
-			if (CurrentButtonIndex < LastArrayIndex)
-			{
-				PreviousButtonIndex = CurrentButtonIndex;
-				CurrentButtonIndex += 1;
-			}
-		}
-	}
-	
-	GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Blue, FString::FromInt(CurrentButtonIndex));
-
-	if (CurrentButtonIndex != PreviousButtonIndex)
-	{
-		ButtonsArray[PreviousButtonIndex]->OnUnhovered.Broadcast();
-		ButtonsArray[CurrentButtonIndex]->OnHovered.Broadcast();
-	}
-
-}
-
-void UMainMenuWidget::CicleArray()
-{
-	for (auto& Button : ButtonsArray)
-	{
-		Button->StartTimer();
-	}
-}
 

@@ -19,6 +19,8 @@ class SPACESHOOTER_API UPauseMenuWidget : public UUserWidget
 		
 	virtual void NativeConstruct() override;
 
+	virtual void NativeTick(const FGeometry & MyGeometry, float InDeltaTime) override;
+
 protected:
 
 	UPROPERTY()
@@ -50,7 +52,5 @@ protected:
 	void SetupData();
 
 	void FillArray();
-
-	void CicleArray();
 	
 };

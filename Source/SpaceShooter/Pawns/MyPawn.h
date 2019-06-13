@@ -14,6 +14,7 @@
 #include "Components/MyPawnMovementComponent.h"
 #include "Components/SpawnAnimComponent.h"
 #include "Components/FireComponent.h"
+#include "Components/CrossHairComponent.h"
 #include "MyPawn.generated.h"
 
 class UMyGameInstance;
@@ -64,6 +65,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere)
 		USpawnAnimComponent* SpawnAnimComponent = nullptr;
+
+	UPROPERTY(VisibleAnywhere)
+		UCrossHairComponent* CrossHairComponent = nullptr;
 
 // Primary fire variables
 public:

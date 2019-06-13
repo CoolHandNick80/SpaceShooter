@@ -9,7 +9,6 @@
 
 
 class UMyButton;
-class APlayerController;
 
 /**
  * 
@@ -20,20 +19,17 @@ class SPACESHOOTER_API UMainMenuWidget : public UUserWidget
 	GENERATED_BODY()
 
 	virtual void NativeConstruct() override;
+
+	virtual void NativeTick(const FGeometry & MyGeometry, float InDeltaTime) override;
 	
 protected:
 
-	UPROPERTY()
-		int32 PreviousButtonIndex = 0;
-
-	UPROPERTY()
-		int32 CurrentButtonIndex = 0;
+	
 
 	UPROPERTY()
 		int32 LastArrayIndex = 0;
 
-	UPROPERTY()
-		APlayerController* PlayerController = nullptr;
+	
 
 	UPROPERTY()
 		TArray<UMyButton*> ButtonsArray;
@@ -50,15 +46,9 @@ protected:
 	UPROPERTY()
 		UMyButton* QuitButton = nullptr;
 
-		FInputBinding InputBinding = FInputBinding::FInputBinding();
+		
  
 protected:
 
 	void SetupData();
-
-	UFUNCTION()
-		void ScrollButtons(float InValue);
-
-	void CicleArray();
-
 };

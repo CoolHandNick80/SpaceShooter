@@ -9,7 +9,7 @@ DEFINE_LOG_CATEGORY(LogGame);
 UEnemyHealthBar::UEnemyHealthBar()
 {
 	SetDrawAtDesiredSize(true);
-	SetWidgetSpace(EWidgetSpace::World);
+	SetWidgetSpace(EWidgetSpace::Screen);
 	SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 

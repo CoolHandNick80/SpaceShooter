@@ -43,6 +43,9 @@ AMyPawn::AMyPawn()
 	ParticleSystem = CreateDefaultSubobject<UParticleSystemComponent>("ParticleSystem");
 	ParticleSystem->SetupAttachment(StaticMeshComponent);
 
+	CrossHairComponent = CreateDefaultSubobject<UCrossHairComponent>("CrossHairComponent");
+	CrossHairComponent->SetupAttachment(StaticMeshComponent);
+
 	MyPawnMovementComponent = CreateDefaultSubobject<UMyPawnMovementComponent>("MyPawnMovementComponent");
 
 	SpawnAnimComponent = CreateDefaultSubobject<USpawnAnimComponent>("SpawnAnimComponent");

@@ -16,8 +16,16 @@ void UPauseMenuWidget::NativeConstruct()
 	FillArray();
 
 	ResumeButton->SetKeyboardFocus();
+}
 
-	CicleArray();
+void UPauseMenuWidget::NativeTick(const FGeometry & MyGeometry, float InDeltaTime)
+{
+	Super::NativeTick(MyGeometry, InDeltaTime);
+
+	for (auto& Button : ButtonsArray)
+	{
+		Button->CheckFocus();
+	}
 }
 
 void UPauseMenuWidget::SetupData()
@@ -59,10 +67,3 @@ void UPauseMenuWidget::FillArray()
 	LastArrayIndex = (ButtonsArray.Num() - 1);
 }
 
-void UPauseMenuWidget::CicleArray()
-{
-	for (auto& Button : ButtonsArray)
-	{
-		Button->StartTimer();
-	}
-}
