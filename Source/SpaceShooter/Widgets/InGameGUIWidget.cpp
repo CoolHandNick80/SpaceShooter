@@ -37,7 +37,7 @@ void UInGameGUIWidget::UpdateScore()
 {
 	if (GameInstance != nullptr)
 	{
-		FString ScoreString = FString::FromInt(GameInstance->GetPlayerData()->Score);
+		FString ScoreString = FString::FromInt(GameInstance->GetPlayerData().Score);
 
 		FText ScoreText = FText::FromString(ScoreString);
 
@@ -49,7 +49,7 @@ void UInGameGUIWidget::UpdateHealth()
 {
 	if (GameInstance != nullptr)
 	{
-		HealthProgressBar->SetPercent(GameInstance->GetPlayerData()->Health / GameInstance->GetPlayerData()->MaxHealth);
+		HealthProgressBar->SetPercent(GameInstance->GetPlayerData().Health / GameInstance->GetPlayerData().MaxHealth);
 
 		//GEngine->AddOnScreenDebugMessage(-1, 5, FColor::Red, FString::SanitizeFloat(GameInstance->GetPlayerData()->Health / GameInstance->GetPlayerData()->MaxHealth));
 	}

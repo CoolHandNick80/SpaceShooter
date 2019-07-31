@@ -27,13 +27,13 @@ public:
 
 protected:
 	
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(VisibleAnywhere)
 		USceneComponent* SceneComponent = nullptr;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(VisibleAnywhere)
 		USpringArmComponent* SpringArmComponent = nullptr;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(VisibleAnywhere)
 		UCameraComponent* CameraComponent = nullptr;
 
 	AActor* TargetActor = nullptr;

@@ -75,6 +75,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void Resume();
 
+	UFUNCTION(BlueprintCallable)
+		void OpenSaveLoadMenu();
+
+	UFUNCTION(BlueprintCallable)
+		void ResumeFromSaveLoadMenu();
+
 protected:
 
 	int32 EnemyCount = 0;

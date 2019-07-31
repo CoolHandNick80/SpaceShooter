@@ -49,3 +49,24 @@ void AInGameHUD::ResumeFromPause()
 		PauseGUI->RemoveFromViewport();
 	}
 }
+
+void AInGameHUD::SetupSaveLoadGUI()
+{
+	if (SaveLoadGUIClass != nullptr)
+	{
+		SaveLoadGUI = CreateWidget<UUserWidget>(GetWorld(), SaveLoadGUIClass);
+
+		if (SaveLoadGUI != nullptr)
+		{
+			SaveLoadGUI->AddToViewport();
+		}
+	}
+}
+
+void AInGameHUD::ResumeFromSaveLoad()
+{
+	if (SaveLoadGUI != nullptr)
+	{
+		SaveLoadGUI->RemoveFromViewport();
+	}
+}

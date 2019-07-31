@@ -35,6 +35,12 @@ protected:
 	UPROPERTY()
 		UUserWidget* PauseGUI = nullptr;
 
+	UPROPERTY(EditDefaultsOnly)
+		TSubclassOf<UUserWidget> SaveLoadGUIClass = nullptr;
+
+	UPROPERTY()
+		UUserWidget* SaveLoadGUI = nullptr;
+
 public:
 
 	void SetupInGameGUI();
@@ -45,7 +51,9 @@ public:
 
 	void ResumeFromPause();
 
+	void SetupSaveLoadGUI();
 
+	void ResumeFromSaveLoad();
 
 	
 };

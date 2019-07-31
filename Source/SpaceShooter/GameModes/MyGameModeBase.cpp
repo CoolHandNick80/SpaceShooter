@@ -139,6 +139,21 @@ void AMyGameModeBase::Resume()
 	}
 }
 
+void AMyGameModeBase::OpenSaveLoadMenu()
+{
+	if (InGameHUD != nullptr)
+	{
+		InGameHUD->ResumeFromPause();
+		InGameHUD->SetupSaveLoadGUI();
+	}
+}
+
+void AMyGameModeBase::ResumeFromSaveLoadMenu()
+{
+	InGameHUD->ResumeFromSaveLoad();
+	InGameHUD->SetupPauseMenuGUI();
+}
+
 void AMyGameModeBase::PlayCamShake(TSubclassOf<class UCameraShake> InShake, FVector InEpicenter)
 {
 	UGameplayStatics::PlayWorldCameraShake(this, InShake, InEpicenter, NULL, NULL);

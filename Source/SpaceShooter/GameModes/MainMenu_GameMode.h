@@ -32,5 +32,18 @@ protected:
 
 	UUserWidget* MyWidget = nullptr;
 
+	UPROPERTY(EditDefaultsOnly)
+		TSubclassOf<UUserWidget> SaveLoadGUIClass = nullptr;
+
+	UPROPERTY()
+		UUserWidget* SaveLoadGUI = nullptr;
+
+public:
+	UFUNCTION(BlueprintCallable)
+	void SetupSaveLoadGUI();
+	
+	UFUNCTION(BlueprintCallable)
+	void ResumeFromSaveLoadMenu();
+
 	
 };

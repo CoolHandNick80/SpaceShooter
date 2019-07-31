@@ -23,4 +23,6 @@ public:
 	UPROPERTY(VisibleAnywhere)
 		FName CurrentLevelName;
 
+	UPROPERTY(VisibleAnywhere)
+		FDateTime SaveDateTime = 0;
 };

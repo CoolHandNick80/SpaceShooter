@@ -103,7 +103,7 @@ void AMyPawn::ReceiveDamage(AActor * DamagedActor, float Damage, const UDamageTy
 {
 	GameInstance->UpdateHealth(Damage);
 
-	if (GameInstance->GetPlayerData()->Health <= 0)
+	if (GameInstance->GetPlayerData().Health <= 0)
 	{
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplosionParticleSystem, GetActorLocation(), FRotator::ZeroRotator, true);
 		UGameplayStatics::PlaySoundAtLocation(GetWorld(), NULL, GetActorLocation());

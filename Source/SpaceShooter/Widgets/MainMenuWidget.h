@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
-#include "Components/InputComponent.h "
 #include "MainMenuWidget.generated.h"
 
-
+class UMyGameInstance;
+class AMainMenu_GameMode;
 class UMyButton;
 
 /**
@@ -24,12 +24,14 @@ class SPACESHOOTER_API UMainMenuWidget : public UUserWidget
 	
 protected:
 
-	
+	UPROPERTY()
+		UMyGameInstance* GameInstance = nullptr;
+
+	UPROPERTY(BlueprintReadOnly)
+		AMainMenu_GameMode* GameMode = nullptr;
 
 	UPROPERTY()
 		int32 LastArrayIndex = 0;
-
-	
 
 	UPROPERTY()
 		TArray<UMyButton*> ButtonsArray;
@@ -46,9 +48,24 @@ protected:
 	UPROPERTY()
 		UMyButton* QuitButton = nullptr;
 
-		
+	UPROPERTY()
+		int32 AmountOfSlots = 6;
+
+	UPROPERTY()
+		TArray<int32> IndexArray;
  
 protected:
 
 	void SetupData();
+
+	bool CheckSaveGame(int32 InSlotIndex);
+
+	void FillArray(int32 InSlotIndex);
+
+	void OrderArray();
+	
+	UFUNCTION(BlueprintCallable)
+	void Continue();
+
+
 };

@@ -23,6 +23,8 @@ class SPACESHOOTER_API UPauseMenuWidget : public UUserWidget
 
 protected:
 
+	
+
 	UPROPERTY()
 		int32 LastArrayIndex = 0;
 
@@ -52,5 +54,9 @@ protected:
 	void SetupData();
 
 	void FillArray();
+
+public:
+
+	
 	
 };
