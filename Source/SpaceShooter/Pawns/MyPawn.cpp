@@ -70,7 +70,6 @@ void AMyPawn::BeginPlay()
 
 	GameInstance = Cast<UMyGameInstance>(UGameplayStatics::GetGameInstance(this));
 	verify(GameInstance != nullptr);
-
 }
 
 // Called every frame

@@ -29,7 +29,7 @@ void UInGameGUIWidget::SetupData()
 		GameInstance->OnScoreUpdated.AddDynamic(this, &UInGameGUIWidget::UpdateScore);
 		GameInstance->OnHealthUpdated.AddDynamic(this, &UInGameGUIWidget::UpdateHealth);
 		//UpdateHealth();
-
+		UpdateScore();
 	}
 }
 
